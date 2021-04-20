@@ -76,5 +76,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DalServerDb\DalServerDb.csproj">
+      <Project>{484f793e-2b35-450a-85c0-ef3bf38c1451}</Project>
+      <Name>DalServerDb</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
