@@ -17,23 +17,42 @@ namespace Server
     {
         GenericUnitOfWork work;
         IGenericReposiyory<User> repositoryUser;
-        
+
         User user;
         public Form1()
         {
             InitializeComponent();
+            work = new GenericUnitOfWork(new ServerContext(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString));
+            repositoryUser = work.Reposiyory<User>();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            work=new GenericUnitOfWork(new ServerContext(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString));
-            if(String.IsNullOrEmpty(textBox1.Text)|| String.IsNullOrEmpty(textBox2.Text)){
+            var username = textBox1.Text;
+            var pwd = textBox2.Text;
 
+            if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(pwd))
+            {
+                MessageBox.Show("Enter login and Password", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            user = repositoryUser.FindAll(x => x.Login == textBox1.Text && x.Password == textBox2.Text).FirstOrDefault();
+           
+            var users = repositoryUser.FindAll(u => u.Login.Equals(username));
+            var user = users.First();
+            this.user = user;
+            if (users.Count() != 0 && user.Password.Equals(pwd))
+            {
+                MessageBox.Show("Вітаємо,авторизація пройдена");
+            }
+            else
+            {
+                MessageBox.Show("Невірний пароль або логін");
+                //Load += (s, e) => Close();
+                return;
+            }
             if (user == null)
             {
-                MessageBox.Show("User not found","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("User not found", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (!user.isAdmin)
