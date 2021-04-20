@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DalServerDb
 {
+    [Serializable]
     public class Test
     {
         public int Id { get; set; }
@@ -13,9 +14,15 @@ namespace DalServerDb
         public string Author { get; set; }
         public DateTime DtCreate { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
         public Test()
         {
             Questions = new List<Question>();
+            Groups = new List<Group>();
+        }
+        public override string ToString()
+        {
+            return $"{Title}";
         }
     }
 }

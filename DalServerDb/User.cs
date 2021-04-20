@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DalServerDb
 {
+    [Serializable]
     public class User
     {
         public int Id { get; set; }
@@ -13,10 +14,14 @@ namespace DalServerDb
         public string Login { get; set; }
         public string Password { get; set; }
         public bool isAdmin { get; set; }
-        public virtual ICollection<UserAnswear> UserAnswears { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
         public User()
         {
-            UserAnswears = new List<UserAnswear>();
+            Groups = new List<Group>();
+        }
+        public override string ToString()
+        {
+            return $"{Name} ";
         }
     }
 }

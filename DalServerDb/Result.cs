@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 namespace DalServerDb
 {
     [Serializable]
-    public class UserAnswear
+    public class Result
     {
         public int Id { get; set; }
-        public DateTime Dt { get; set; }
         public User User { get; set; }
-        public Answer Answer { get; set; }
+        public Test Test { get; set; }
+        public int QtyOfRightAnswers { get; set; }
+        public int Mark { get; set; }
+        public DateTime Date { get; set; }
     }
 }
