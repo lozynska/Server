@@ -24,6 +24,8 @@ namespace Server
             InitializeComponent();
             work = new GenericUnitOfWork(new ServerContext(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString));
             repositoryUser = work.Reposiyory<User>();
+            //user = new User() { Name = "ad", Login = "ad", Password = "1111", isAdmin = true };
+            //repositoryUser.Add(user);
         }
 
         private void button1_Click(object sender, EventArgs e)
