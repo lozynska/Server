@@ -157,20 +157,23 @@ namespace Server
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showToolStripMenuItem.Text = "Show";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // menuStrip4
             // 
@@ -218,14 +221,16 @@ namespace Server
             // addUaerToolStripMenuItem
             // 
             this.addUaerToolStripMenuItem.Name = "addUaerToolStripMenuItem";
-            this.addUaerToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.addUaerToolStripMenuItem.Text = "Add uaer";
+            this.addUaerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addUaerToolStripMenuItem.Text = "Add user";
+            this.addUaerToolStripMenuItem.Click += new System.EventHandler(this.addUaerToolStripMenuItem_Click);
             // 
             // showUsersToolStripMenuItem
             // 
             this.showUsersToolStripMenuItem.Name = "showUsersToolStripMenuItem";
-            this.showUsersToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.showUsersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showUsersToolStripMenuItem.Text = "Show Users";
+            this.showUsersToolStripMenuItem.Click += new System.EventHandler(this.showUsersToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 

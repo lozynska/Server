@@ -81,17 +81,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUser.Designer.cs">
+      <DependentUpon>FormUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_AddGroup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_AddGroup.Designer.cs">
       <DependentUpon>Form_AddGroup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_AddUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_AddUser.Designer.cs">
-      <DependentUpon>Form_AddUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Main_Form.cs">
       <SubType>Form</SubType>
@@ -103,6 +103,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUser.resx">
+      <DependentUpon>FormUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_AddGroup.resx">
       <DependentUpon>Form_AddGroup.cs</DependentUpon>

@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Server
 {
-    public partial class Form_AddUser : Form
+    public partial class FormUser : Form
     {
-        public Form_AddUser()
+        public FormUser()
         {
             InitializeComponent();
+            comboBox1.Items.Add("True");
+            comboBox1.Items.Add("False");
         }
     }
 }

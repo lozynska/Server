@@ -133,7 +133,7 @@ namespace Server
         private void showToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             dataGridView1.Visible = true;
-            filter = 5;
+            filter = 1;
             dataGridView1.DataSource = repositoryGroup.GetAll().Select(x => new { Id = x.Id, Tille = x.Title }).ToList();
         }
 
@@ -167,6 +167,63 @@ namespace Server
                 repositoryGroup.Update(group);
             }
             dataGridView1.DataSource = repositoryGroup.GetAll().Select(x => new { Id = x.Id, Tille = x.Title }).ToList();
+        }
+
+        private void addUaerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void showUsersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = true;
+            filter = 2;
+            dataGridView1.DataSource = repositoryUser.GetAll().Select(x => new { Id = x.Id, Name = x.Name, Login = x.Login, Password = x.Password, isAdmin = x.isAdmin }).ToList();
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = true;
+            FormUser formUser = new FormUser();
+            if (formUser.ShowDialog() == DialogResult.OK)
+            {
+                User user = new User()
+                {
+                    Name = formUser.textBox1.Text,
+                    Login = formUser.textBox2.Text,
+                    Password = formUser.textBox3.Text,
+                    isAdmin = Convert.ToBoolean(formUser.comboBox1.SelectedItem),
+
+                };
+                repositoryUser.Add(user);
+                dataGridView1.DataSource = repositoryUser.GetAll().Select(x => new { Id = x.Id, Name = x.Name, Login = x.Login, Password = x.Password, isAdmin = x.isAdmin }).ToList();
+            }
+        }
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = true;
+            FormUser formUser = new FormUser();
+            int id = Int32.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            var user = repositoryUser.FindById(id);
+            formUser.textBox1.Text = user.Name;
+            formUser.textBox2.Text = user.Login;
+            formUser.textBox3.Text = user.Password;
+            formUser.comboBox1.SelectedItem = user.isAdmin;
+            if (formUser.ShowDialog() == DialogResult.OK)
+            {
+                user.Name = formUser.textBox1.Text;
+                user.Login = formUser.textBox2.Text;
+                user.Password = formUser.textBox3.Text;
+                user.isAdmin = Convert.ToBoolean(formUser.comboBox1.SelectedItem);
+                repositoryUser.Update(user);
+            }
+            dataGridView1.DataSource = repositoryUser.GetAll().Select(x => new { Id = x.Id, Name = x.Name, Login = x.Login, Password = x.Password, isAdmin = x.isAdmin }).ToList();
         }
     }
 }
