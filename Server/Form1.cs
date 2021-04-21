@@ -26,6 +26,8 @@ namespace Server
             repositoryUser = work.Reposiyory<User>();
             //user = new User() { Name = "ad", Login = "ad", Password = "1111", isAdmin = true };
             //repositoryUser.Add(user);
+            Main_Form main_Form = new Main_Form(user);
+            main_Form.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)

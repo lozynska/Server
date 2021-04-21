@@ -49,9 +49,12 @@ namespace Server
             this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.addUaerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showUsersStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.showUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -121,6 +124,7 @@ namespace Server
             this.showAllToolStripMenuItem.Name = "showAllToolStripMenuItem";
             this.showAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showAllToolStripMenuItem.Text = "Show All";
+            this.showAllToolStripMenuItem.Click += new System.EventHandler(this.showAllToolStripMenuItem_Click);
             // 
             // asignessTestToolStripMenuItem
             // 
@@ -157,21 +161,21 @@ namespace Server
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
@@ -192,7 +196,7 @@ namespace Server
             this.addToolStripMenuItem1,
             this.updateToolStripMenuItem1,
             this.addUaerToolStripMenuItem,
-            this.showUsersToolStripMenuItem});
+            this.showUsersStripMenuItem});
             this.groupsToolStripMenuItem.Name = "groupsToolStripMenuItem";
             this.groupsToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.groupsToolStripMenuItem.Text = "Groups";
@@ -225,12 +229,12 @@ namespace Server
             this.addUaerToolStripMenuItem.Text = "Add user";
             this.addUaerToolStripMenuItem.Click += new System.EventHandler(this.addUaerToolStripMenuItem_Click);
             // 
-            // showUsersToolStripMenuItem
+            // showUsersStripMenuItem
             // 
-            this.showUsersToolStripMenuItem.Name = "showUsersToolStripMenuItem";
-            this.showUsersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.showUsersToolStripMenuItem.Text = "Show Users";
-            this.showUsersToolStripMenuItem.Click += new System.EventHandler(this.showUsersToolStripMenuItem_Click);
+            this.showUsersStripMenuItem.Name = "showUsersStripMenuItem";
+            this.showUsersStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showUsersStripMenuItem.Text = "Show Users";
+            this.showUsersStripMenuItem.Click += new System.EventHandler(this.showUsersToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
@@ -250,11 +254,37 @@ namespace Server
             this.button1.Text = "Remove";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(635, 206);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(561, 213);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Select group";
+            // 
+            // showUsersToolStripMenuItem
+            // 
+            this.showUsersToolStripMenuItem.Name = "showUsersToolStripMenuItem";
+            this.showUsersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showUsersToolStripMenuItem.Text = "Show Users";
+            this.showUsersToolStripMenuItem.Click += new System.EventHandler(this.showUsersToolStripMenuItem_Click);
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
@@ -272,6 +302,7 @@ namespace Server
             this.menuStrip4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -293,12 +324,15 @@ namespace Server
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip4;
         private System.Windows.Forms.ToolStripMenuItem groupsToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addUaerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showUsersToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem showUsersStripMenuItem;
     }
 }

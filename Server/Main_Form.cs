@@ -50,6 +50,15 @@ namespace Server
 
 
             dataGridView1.Visible = false;
+            comboBox1.Visible = false;
+            label1.Visible = false;
+            comboBox1.DisplayMember = "Title";
+
+            repositoryGroup.GetAll().ToList().ForEach(row =>
+            {
+
+                comboBox1.Items.Add(row);
+            });
 
 
             //TcpClient client = null;
@@ -137,6 +146,8 @@ namespace Server
             dataGridView1.DataSource = repositoryGroup.GetAll().Select(x => new { Id = x.Id, Tille = x.Title }).ToList();
         }
 
+
+
         private void addToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             dataGridView1.Visible = true;
@@ -171,12 +182,56 @@ namespace Server
 
         private void addUaerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            ClearComboboxEvents();
+            comboBox1.Visible = true;
+            comboBox1.SelectedIndex = 0;
+            dataGridView1.Visible = true;
+            label1.Visible = true;
+            dataGridView1.DataSource = repositoryUser.GetAll().Select(x => new { Id = x.Id, Name = x.Name, Login = x.Login, Password = x.Password, isAdmin = x.isAdmin }).ToList();
+            comboBox1.SelectedIndexChanged += AddUserSelected;
         }
 
-        private void showUsersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddUserSelected(object sender, EventArgs e)
         {
-           
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    var group = (Group)comboBox1.SelectedItem;
+                    if (group != null)
+                    {
+                        User user = repositoryUser.FindById(row.Cells[0].Value);
+                        user.Groups.Add(group);
+                        repositoryUser.Update(user);
+                    }
+                } 
+            }
+        }
+
+            private void showUsersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClearComboboxEvents();
+            comboBox1.Visible = true;
+            comboBox1.SelectedIndex = 0;
+            dataGridView1.Visible = true;
+            label1.Visible = true;
+            ShowUsers(sender, e);
+            comboBox1.SelectedIndexChanged += ShowUsers;
+        }
+
+        private void ShowUsers(object sender, EventArgs e)
+        {
+            var group = (Group)comboBox1.SelectedItem;
+            if (group != null)
+            {
+                dataGridView1.DataSource = group.Users;
+            }
+        }
+
+        private void ClearComboboxEvents()
+        {
+            comboBox1.SelectedIndexChanged -= AddUserSelected;
+            comboBox1.SelectedIndexChanged -= ShowUsers;
         }
 
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
@@ -224,6 +279,13 @@ namespace Server
                 repositoryUser.Update(user);
             }
             dataGridView1.DataSource = repositoryUser.GetAll().Select(x => new { Id = x.Id, Name = x.Name, Login = x.Login, Password = x.Password, isAdmin = x.isAdmin }).ToList();
+        }
+
+        private void showAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = true;
+            filter = 3;
+            dataGridView1.DataSource = repositoryTest.GetAll().Select(x => new { Id = x.Id, Title = x.Title, Author = x.Author, DtCreate = x.DtCreate }).ToList();
         }
     }
 }
