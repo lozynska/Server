@@ -40,7 +40,7 @@ namespace Server
             }
            
             var users = repositoryUser.FindAll(u => u.Login.Equals(username));
-            var user = users.First();
+            var user = users.FirstOrDefault();
             this.user = user;
             if (users.Count() != 0 && user.Password.Equals(pwd))
             {
@@ -49,7 +49,7 @@ namespace Server
             else
             {
                 MessageBox.Show("Невірний пароль або логін");
-                //Load += (s, e) => Close();
+                
                 return;
             }
             if (user == null)
@@ -59,7 +59,7 @@ namespace Server
             }
             if (!user.isAdmin)
             {
-                MessageBox.Show("User not found", "Access", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Access denired", "Access", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else

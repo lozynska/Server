@@ -34,7 +34,7 @@ namespace Server
         int portRecive_Test = 5557;
         int portSend_Res = 5560;
         int portRecive_Res = 5559;
-       
+        int filter = 0;
         public Main_Form(User user)
         {
             InitializeComponent();
@@ -47,10 +47,10 @@ namespace Server
             repositoryTest = work.Reposiyory<Test>();
             repositoryAnswer = work.Reposiyory<Answer>();
             repositoryUserAnswear = work.Reposiyory<UserAnswear>();
-           
+
 
             dataGridView1.Visible = false;
-            
+
 
             //TcpClient client = null;
             //NetworkStream stream;
@@ -128,6 +128,45 @@ namespace Server
             //        }
             //    }
             //});
+        }
+
+        private void showToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = true;
+            filter = 5;
+            dataGridView1.DataSource = repositoryGroup.GetAll().Select(x => new { Id = x.Id, Tille = x.Title }).ToList();
+        }
+
+        private void addToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = true;
+            Form_AddGroup addGroup = new Form_AddGroup();
+            if (addGroup.ShowDialog() == DialogResult.OK)
+            {
+                Group group = new Group()
+                {
+                    Title = addGroup.textBox1.Text,
+
+                };
+                repositoryGroup.Add(group);
+                dataGridView1.DataSource = repositoryGroup.GetAll().Select(x => new { Id = x.Id, Tille = x.Title }).ToList();
+            }
+
+        }
+
+        private void updateToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = true;
+            Form_AddGroup addGroup = new Form_AddGroup();
+            int id = Int32.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            var group = repositoryGroup.FindById(id);
+            addGroup.textBox1.Text = group.Title;
+            if (addGroup.ShowDialog() == DialogResult.OK)
+            {
+                group.Title = addGroup.textBox1.Text;
+                repositoryGroup.Update(group);
+            }
+            dataGridView1.DataSource = repositoryGroup.GetAll().Select(x => new { Id = x.Id, Tille = x.Title }).ToList();
         }
     }
 }

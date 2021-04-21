@@ -197,20 +197,23 @@ namespace Server
             // showToolStripMenuItem1
             // 
             this.showToolStripMenuItem1.Name = "showToolStripMenuItem1";
-            this.showToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.showToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.showToolStripMenuItem1.Text = "Show";
+            this.showToolStripMenuItem1.Click += new System.EventHandler(this.showToolStripMenuItem1_Click);
             // 
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem1.Text = "Add";
+            this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
             // 
             // updateToolStripMenuItem1
             // 
             this.updateToolStripMenuItem1.Name = "updateToolStripMenuItem1";
-            this.updateToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.updateToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.updateToolStripMenuItem1.Text = "Update";
+            this.updateToolStripMenuItem1.Click += new System.EventHandler(this.updateToolStripMenuItem1_Click);
             // 
             // addUaerToolStripMenuItem
             // 
