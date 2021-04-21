@@ -141,12 +141,23 @@ namespace Server
 
         private void showToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            ClearEvents();
             dataGridView1.Visible = true;
             filter = 1;
             dataGridView1.DataSource = repositoryGroup.GetAll().Select(x => new { Id = x.Id, Tille = x.Title }).ToList();
+            removeButton.Click += RemoveGroup;
         }
 
-
+        private void RemoveGroup(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
+            var group = repositoryGroup.FindById(id);
+            group.Tests.Clear();
+            group.Users.Clear();
+            repositoryGroup.Update(group);
+            repositoryGroup.Remove(group);
+            dataGridView1.DataSource = repositoryGroup.GetAll().Select(x => new { Id = x.Id, Tille = x.Title }).ToList();
+        }
 
         private void addToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -182,7 +193,7 @@ namespace Server
 
         private void addUaerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ClearComboboxEvents();
+            ClearEvents();
             comboBox1.Visible = true;
             comboBox1.SelectedIndex = 0;
             dataGridView1.Visible = true;
@@ -210,7 +221,7 @@ namespace Server
 
             private void showUsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ClearComboboxEvents();
+            ClearEvents();
             comboBox1.Visible = true;
             comboBox1.SelectedIndex = 0;
             dataGridView1.Visible = true;
@@ -228,16 +239,29 @@ namespace Server
             }
         }
 
-        private void ClearComboboxEvents()
+        private void ClearEvents()
         {
             comboBox1.SelectedIndexChanged -= AddUserSelected;
             comboBox1.SelectedIndexChanged -= ShowUsers;
+            removeButton.Click -= RemoveGroup;
+            removeButton.Click -= RemoveUser;
         }
 
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ClearEvents();
             dataGridView1.Visible = true;
             filter = 2;
+            dataGridView1.DataSource = repositoryUser.GetAll().Select(x => new { Id = x.Id, Name = x.Name, Login = x.Login, Password = x.Password, isAdmin = x.isAdmin }).ToList();
+            removeButton.Click += RemoveUser;
+        }
+        private void RemoveUser(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
+            var user = repositoryUser.FindById(id);
+            user.Groups.Clear();
+            repositoryUser.Update(user);
+            repositoryUser.Remove(user);
             dataGridView1.DataSource = repositoryUser.GetAll().Select(x => new { Id = x.Id, Name = x.Name, Login = x.Login, Password = x.Password, isAdmin = x.isAdmin }).ToList();
         }
 

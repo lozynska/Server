@@ -51,7 +51,7 @@ namespace Server
             this.addUaerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showUsersStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.removeButton = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.showUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -245,14 +245,14 @@ namespace Server
             this.dataGridView1.Size = new System.Drawing.Size(557, 166);
             this.dataGridView1.TabIndex = 1;
             // 
-            // button1
+            // removeButton
             // 
-            this.button1.Location = new System.Drawing.Point(251, 389);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Remove";
-            this.button1.UseVisualStyleBackColor = true;
+            this.removeButton.Location = new System.Drawing.Point(251, 389);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(75, 23);
+            this.removeButton.TabIndex = 2;
+            this.removeButton.Text = "Remove";
+            this.removeButton.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
@@ -285,7 +285,7 @@ namespace Server
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.removeButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Main_Form";
@@ -325,7 +325,7 @@ namespace Server
         private System.Windows.Forms.MenuStrip menuStrip4;
         private System.Windows.Forms.ToolStripMenuItem groupsToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem1;
