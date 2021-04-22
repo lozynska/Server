@@ -13,6 +13,8 @@ namespace DalServerDb
         public string Title { get; set; }
         public string Author { get; set; }
         public DateTime DtCreate { get; set; }
+        public int Hour { get; set; }
+        public int Minute { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<Group> Groups { get; set; }
         public Test()

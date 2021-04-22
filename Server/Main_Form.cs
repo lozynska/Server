@@ -64,7 +64,7 @@ namespace Server
 
                 comboBox1.Items.Add(row);
             });
-            
+
 
             //TcpClient client = null;
             //NetworkStream stream;
@@ -220,11 +220,11 @@ namespace Server
                         user.Groups.Add(group);
                         repositoryUser.Update(user);
                     }
-                } 
+                }
             }
         }
 
-            private void showUsersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void showUsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ClearEvents();
             comboBox1.Visible = true;
@@ -333,7 +333,7 @@ namespace Server
                 textBox1.Text = test.Author;
                 textBox2.Text = test.Title;
                 textBox3.Text = test.Questions.Count.ToString();
-                              
+
             }
         }
 
@@ -384,8 +384,11 @@ namespace Server
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {            
+        {
+            test.Hour = Convert.ToInt32(numericUpDown1.Value);
+            test.Minute = Convert.ToInt32(numericUpDown2.Value);
             repositoryTest.Add(test);
+            MessageBox.Show("Test is loaded");
         }
     }
 }
