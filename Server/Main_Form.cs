@@ -14,6 +14,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SerialDeserial = TestLib.SerialDeserial;
+using XmlTest = TestLib.Test;
 
 namespace Server
 {
@@ -36,6 +38,7 @@ namespace Server
         int portRecive_Res = 5559;
         int filter = 0;
         string file;
+        Test test;
         public Main_Form(User user)
         {
             InitializeComponent();
@@ -319,7 +322,6 @@ namespace Server
         private void loadTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             groupBox2.Visible = true;
-
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -327,8 +329,11 @@ namespace Server
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
 
-                file = openFileDialog1.FileName;
-               
+                test = TestConverter.convert(openFileDialog1.FileName);
+                textBox1.Text = test.Author;
+                textBox2.Text = test.Title;
+                textBox3.Text = test.Questions.Count.ToString();
+                              
             }
         }
 
@@ -376,6 +381,11 @@ namespace Server
                     }
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {            
+            repositoryTest.Add(test);
         }
     }
 }
