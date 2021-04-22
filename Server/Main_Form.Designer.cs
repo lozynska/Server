@@ -55,12 +55,33 @@ namespace Server
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.showUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.menuStrip5 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.menuStrip3.SuspendLayout();
             this.menuStrip4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.menuStrip5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -69,9 +90,9 @@ namespace Server
             this.groupBox1.Controls.Add(this.menuStrip2);
             this.groupBox1.Controls.Add(this.menuStrip3);
             this.groupBox1.Controls.Add(this.menuStrip4);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 41);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(205, 426);
+            this.groupBox1.Size = new System.Drawing.Size(205, 397);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "admin";
@@ -118,6 +139,7 @@ namespace Server
             this.loadTestToolStripMenuItem.Name = "loadTestToolStripMenuItem";
             this.loadTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadTestToolStripMenuItem.Text = "Load Test";
+            this.loadTestToolStripMenuItem.Click += new System.EventHandler(this.loadTestToolStripMenuItem_Click);
             // 
             // showAllToolStripMenuItem
             // 
@@ -131,12 +153,14 @@ namespace Server
             this.asignessTestToolStripMenuItem.Name = "asignessTestToolStripMenuItem";
             this.asignessTestToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.asignessTestToolStripMenuItem.Text = "Asigness Test";
+            this.asignessTestToolStripMenuItem.Click += new System.EventHandler(this.asignessTestToolStripMenuItem_Click);
             // 
             // showTestsOfGroupToolStripMenuItem
             // 
             this.showTestsOfGroupToolStripMenuItem.Name = "showTestsOfGroupToolStripMenuItem";
             this.showTestsOfGroupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showTestsOfGroupToolStripMenuItem.Text = "Show tests of Group";
+            this.showTestsOfGroupToolStripMenuItem.Click += new System.EventHandler(this.showTestsOfGroupToolStripMenuItem_Click);
             // 
             // menuStrip3
             // 
@@ -204,35 +228,35 @@ namespace Server
             // showToolStripMenuItem1
             // 
             this.showToolStripMenuItem1.Name = "showToolStripMenuItem1";
-            this.showToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.showToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.showToolStripMenuItem1.Text = "Show";
             this.showToolStripMenuItem1.Click += new System.EventHandler(this.showToolStripMenuItem1_Click);
             // 
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.addToolStripMenuItem1.Text = "Add";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
             // 
             // updateToolStripMenuItem1
             // 
             this.updateToolStripMenuItem1.Name = "updateToolStripMenuItem1";
-            this.updateToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.updateToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
             this.updateToolStripMenuItem1.Text = "Update";
             this.updateToolStripMenuItem1.Click += new System.EventHandler(this.updateToolStripMenuItem1_Click);
             // 
             // addUaerToolStripMenuItem
             // 
             this.addUaerToolStripMenuItem.Name = "addUaerToolStripMenuItem";
-            this.addUaerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addUaerToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.addUaerToolStripMenuItem.Text = "Add user";
             this.addUaerToolStripMenuItem.Click += new System.EventHandler(this.addUaerToolStripMenuItem_Click);
             // 
             // showUsersStripMenuItem
             // 
             this.showUsersStripMenuItem.Name = "showUsersStripMenuItem";
-            this.showUsersStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showUsersStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.showUsersStripMenuItem.Text = "Show Users";
             this.showUsersStripMenuItem.Click += new System.EventHandler(this.showUsersToolStripMenuItem_Click);
             // 
@@ -278,16 +302,169 @@ namespace Server
             this.showUsersToolStripMenuItem.Text = "Show Users";
             this.showUsersToolStripMenuItem.Click += new System.EventHandler(this.showUsersToolStripMenuItem_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.numericUpDown2);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.numericUpDown1);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Location = new System.Drawing.Point(251, 184);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(304, 199);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Info";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Author";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(78, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(220, 20);
+            this.textBox1.TabIndex = 1;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(78, 45);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(220, 20);
+            this.textBox2.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Name of Test";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(78, 71);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(220, 20);
+            this.textBox3.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 74);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Qty of Question";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 108);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Time";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(47, 108);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Hour";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(83, 106);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(67, 20);
+            this.numericUpDown1.TabIndex = 8;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(208, 106);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(67, 20);
+            this.numericUpDown2.TabIndex = 10;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(172, 108);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(39, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Minute";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(78, 156);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Ok";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(200, 156);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // menuStrip5
+            // 
+            this.menuStrip5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip5.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip5.Name = "menuStrip5";
+            this.menuStrip5.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip5.TabIndex = 6;
+            this.menuStrip5.Text = "menuStrip5";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.menuStrip5);
+            this.MainMenuStrip = this.menuStrip5;
             this.Name = "Main_Form";
             this.Text = "Main_Form";
             this.groupBox1.ResumeLayout(false);
@@ -301,6 +478,12 @@ namespace Server
             this.menuStrip4.ResumeLayout(false);
             this.menuStrip4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.menuStrip5.ResumeLayout(false);
+            this.menuStrip5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,5 +517,22 @@ namespace Server
         private System.Windows.Forms.ToolStripMenuItem addUaerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showUsersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showUsersStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MenuStrip menuStrip5;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

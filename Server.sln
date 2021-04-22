@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalServerDb", "DalServerDb\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositiryex1", "Repositiryex1\Repositiryex1.csproj", "{6758661C-F6EF-4627-8B6F-3148A924673D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{7C84F69E-3E92-4623-8994-C8A9C73F7FDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6758661C-F6EF-4627-8B6F-3148A924673D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6758661C-F6EF-4627-8B6F-3148A924673D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6758661C-F6EF-4627-8B6F-3148A924673D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C84F69E-3E92-4623-8994-C8A9C73F7FDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C84F69E-3E92-4623-8994-C8A9C73F7FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C84F69E-3E92-4623-8994-C8A9C73F7FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C84F69E-3E92-4623-8994-C8A9C73F7FDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

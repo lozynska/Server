@@ -35,6 +35,7 @@ namespace Server
         int portSend_Res = 5560;
         int portRecive_Res = 5559;
         int filter = 0;
+        string file;
         public Main_Form(User user)
         {
             InitializeComponent();
@@ -52,6 +53,7 @@ namespace Server
             dataGridView1.Visible = false;
             comboBox1.Visible = false;
             label1.Visible = false;
+            groupBox2.Visible = false;
             comboBox1.DisplayMember = "Title";
 
             repositoryGroup.GetAll().ToList().ForEach(row =>
@@ -59,7 +61,7 @@ namespace Server
 
                 comboBox1.Items.Add(row);
             });
-
+            
 
             //TcpClient client = null;
             //NetworkStream stream;
@@ -243,6 +245,8 @@ namespace Server
         {
             comboBox1.SelectedIndexChanged -= AddUserSelected;
             comboBox1.SelectedIndexChanged -= ShowUsers;
+            comboBox1.SelectedIndexChanged -= ShowTests;
+            comboBox1.SelectedIndexChanged -= AddTestSelected;
             removeButton.Click -= RemoveGroup;
             removeButton.Click -= RemoveUser;
         }
@@ -310,6 +314,68 @@ namespace Server
             dataGridView1.Visible = true;
             filter = 3;
             dataGridView1.DataSource = repositoryTest.GetAll().Select(x => new { Id = x.Id, Title = x.Title, Author = x.Author, DtCreate = x.DtCreate }).ToList();
+        }
+
+        private void loadTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBox2.Visible = true;
+
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                file = openFileDialog1.FileName;
+               
+            }
+        }
+
+        private void showTestsOfGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClearEvents();
+            comboBox1.Visible = true;
+            comboBox1.SelectedIndex = 0;
+            dataGridView1.Visible = true;
+            label1.Visible = true;
+            ShowTests(sender, e);
+            comboBox1.SelectedIndexChanged += ShowTests;
+        }
+        private void ShowTests(object sender, EventArgs e)
+        {
+            var group = (Group)comboBox1.SelectedItem;
+            if (group != null)
+            {
+                dataGridView1.DataSource = group.Tests;
+            }
+        }
+
+        private void asignessTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClearEvents();
+            comboBox1.Visible = true;
+            comboBox1.SelectedIndex = 0;
+            dataGridView1.Visible = true;
+            label1.Visible = true;
+            dataGridView1.DataSource = repositoryTest.GetAll().Select(x => new { Id = x.Id, Title = x.Title, Author = x.Author, DtCreate = x.DtCreate }).ToList();
+            comboBox1.SelectedIndexChanged += AddTestSelected;
+        }
+        private void AddTestSelected(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    var group = (Group)comboBox1.SelectedItem;
+                    if (group != null)
+                    {
+                        Test test = repositoryTest.FindById(row.Cells[0].Value);
+                        test.Groups.Add(group);
+                        repositoryTest.Update(test);
+                    }
+                }
+            }
         }
     }
 }
