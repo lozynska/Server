@@ -58,6 +58,7 @@ namespace Server
             label1.Visible = false;
             groupBox2.Visible = false;
             comboBox1.DisplayMember = "Title";
+            removeButton.Visible = false;
 
             repositoryGroup.GetAll().ToList().ForEach(row =>
             {
@@ -65,88 +66,15 @@ namespace Server
                 comboBox1.Items.Add(row);
             });
 
-
-            //TcpClient client = null;
-            //NetworkStream stream;
-            //IPAddress local_host = IPAddress.Parse("127.0.0.1");
-
-            //TcpListener server = new TcpListener(local_host, portRecive);
-            //server.Start();
-
-            //TcpListener serverTest = new TcpListener(local_host, portRecive_Test);
-            //serverTest.Start();
-
-            //TcpListener serverRes = new TcpListener(local_host, portRecive_Res);
-            //serverRes.Start();
-
-            ////Users
-            //Task.Run(() =>
-            //{
-            //    while (true)
-            //    {
-            //        TcpClient client1 = server.AcceptTcpClient();
-            //        NetworkStream st = client1.GetStream();
-            //        byte[] buff = new byte[1024];
-            //        MemoryStream ms = new MemoryStream();
-
-            //        do
-            //        {
-            //            int bytes = st.Read(buff, 0, buff.Length);
-            //           //ms.Append(buff);
-            //        } while (st.DataAvailable);
-            //        BinaryFormatter bf = new BinaryFormatter();
-            //        ms.Position = 0;
-            //        User user1 =(User) bf.Deserialize(ms);
-            //        ms.Close();
-
-            //        var user2 = repositoryUser.FindAll(x => x.Login == user1.Login && x.Password == user1.Password).First();
-
-            //        if (user2 != null)
-            //        {
-            //            user1.Id = user2.Id;
-            //            user1.Name = user2.Name;
-            //            user1.Login = user2.Login;
-            //            user1.Password = user2.Password;
-            //            user1.isAdmin = user2.isAdmin;
-
-            //            byte[] data;
-            //            using(ms=new MemoryStream())
-            //            {
-            //                var b_f = new BinaryFormatter();
-            //                b_f.Serialize(ms, user1);
-            //                data = ms.ToArray();
-            //            }
-            //            client = new TcpClient();
-            //            client.Connect("localhost", portSend);
-            //            stream = client.GetStream();
-            //            stream.Write(data, 0, data.Length);
-            //            ms.Close();
-            //        }
-            //        else
-            //        {
-            //            user1.Id = -1;
-            //            byte[] data;
-            //            using (ms = new MemoryStream())
-            //            {
-            //                var b_f = new BinaryFormatter();
-            //                b_f.Serialize(ms, user1);
-            //                data = ms.ToArray();
-            //            }
-            //            client = new TcpClient();
-            //            client.Connect("localhost", portSend);
-            //            stream = client.GetStream();
-            //            stream.Write(data, 0, data.Length);
-            //            ms.Close();
-
-
-            //        }
-            //    }
-            //});
+            TestServer server = new TestServer(work);
+            server.Start();
+            
         }
 
         private void showToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ClearEvents();
+            removeButton.Visible = true;
             dataGridView1.Visible = true;
             filter = 1;
             dataGridView1.DataSource = repositoryGroup.GetAll().Select(x => new { Id = x.Id, Tille = x.Title }).ToList();
@@ -155,6 +83,7 @@ namespace Server
 
         private void RemoveGroup(object sender, EventArgs e)
         {
+            removeButton.Visible = true;
             int id = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
             var group = repositoryGroup.FindById(id);
             group.Tests.Clear();
@@ -257,6 +186,7 @@ namespace Server
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ClearEvents();
+            removeButton.Visible = true;
             dataGridView1.Visible = true;
             filter = 2;
             dataGridView1.DataSource = repositoryUser.GetAll().Select(x => new { Id = x.Id, Name = x.Name, Login = x.Login, Password = x.Password, isAdmin = x.isAdmin }).ToList();
@@ -264,6 +194,7 @@ namespace Server
         }
         private void RemoveUser(object sender, EventArgs e)
         {
+            removeButton.Visible = true;
             int id = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
             var user = repositoryUser.FindById(id);
             user.Groups.Clear();

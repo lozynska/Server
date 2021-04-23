@@ -32,8 +32,8 @@ namespace Client
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -68,6 +68,13 @@ namespace Client
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Client";
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(89, 68);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(240, 20);
+            this.textBox2.TabIndex = 3;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -77,15 +84,9 @@ namespace Client
             this.label2.TabIndex = 2;
             this.label2.Text = "Password";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(89, 68);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(240, 20);
-            this.textBox2.TabIndex = 3;
-            // 
             // button1
             // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.Location = new System.Drawing.Point(99, 187);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -95,6 +96,7 @@ namespace Client
             // 
             // button2
             // 
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button2.Location = new System.Drawing.Point(236, 187);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -121,9 +123,9 @@ namespace Client
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

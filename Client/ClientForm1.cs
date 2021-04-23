@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DalServerDb;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace Client
 {
     public partial class ClientForm : Form
     {
+       
         public ClientForm()
         {
             InitializeComponent();
