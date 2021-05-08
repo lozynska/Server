@@ -51,6 +51,7 @@ namespace Client
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.Location = new System.Drawing.Point(185, 54);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(439, 150);
             this.dataGridView1.TabIndex = 1;
             // 
@@ -62,6 +63,7 @@ namespace Client
             this.button1.TabIndex = 2;
             this.button1.Text = "To pass the test";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form_Main
             // 

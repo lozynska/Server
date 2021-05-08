@@ -18,6 +18,7 @@ namespace Client
         public Form_Main()
         {
             InitializeComponent();
+            
             TestClient client = new TestClient();
             client.Strart();
             ClientForm clientForm = new ClientForm();
@@ -32,10 +33,21 @@ namespace Client
                     Load += (s, e) => Close();
                     return;
                 }
-                //tests = client.GetTests(user);
-                dataGridView1.DataSource=user.Groups.SelectMany(g => g.Tests)
+                tests = user.Groups.SelectMany(g => g.Tests).ToList();
+                dataGridView1.DataSource= tests
                     .Select(x => new { Id = x.Id, Title = x.Title, Author = x.Author, DtCreate = x.DtCreate })
                     .ToList();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int id = (int)dataGridView1.SelectedRows[0].Cells[0].Value;
+                Test test = tests.Find(t => t.Id == id);
+                Form_Test form_Test = new Form_Test(test);
+                form_Test.ShowDialog();
             }
         }
     }
